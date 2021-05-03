@@ -1,0 +1,77 @@
+/* pages/home_center/statistics_panel/index.wxss */
+.roDpItem-normal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 54px;
+  padding: 16px 2px;
+}
+
+.roDpItem-normal:not(:last-child) {
+  border-right: solid 1px #d6d6d6;
+}
+
+.roDpItem-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 54px;
+  padding: 16px 33px;
+}
+
+.roDpItem-two:not(:last-child) {
+  border-right: solid 1px #d6d6d6;
+}
+
+.roDpItem-one {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  height: 64px;
+  padding: 20px 24px;
+  background-color: #fff;
+  border-radius: 14px;
+}
+
+.roDpItem-dpName {
+  flex: 1;
+  width: 115px;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  line-height: 24px;
+  color: rgba(80, 80, 80, 0.5);
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.roDpItem-status {
+  width: 115px;
+  text-align: center;
+  font-family: PingFangSC-Semibold;
+  font-size: 18px;
+  line-height: 24px;
+  color: #505050;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.statuslist {
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+  line-height: 12px;
+  flex-wrap: wrap;
+}
+
+.scroll-view {
+  padding: 16px 8px;
+  width: auto;
+  height: 100%;
+}
+.canvas {
+  width: 100%;
+  height: 200px;
+}

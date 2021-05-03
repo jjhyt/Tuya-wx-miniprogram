@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    
+  },
+  "navigationStyle":"default",
+  "navigationBarTitleText": "小小智能家",
+  "disableScroll": true
+}

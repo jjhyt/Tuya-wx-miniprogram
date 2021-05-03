@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
+  },
+  "navigationStyle":"default",
+  "navigationBarTitleText": "家庭管理",
+  "disableScroll": true
+}

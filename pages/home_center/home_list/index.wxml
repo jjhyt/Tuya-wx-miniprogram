@@ -1,0 +1,100 @@
+<!--miniprogram/pages/home_center/home_list/index.js.wxml-->
+
+<van-dropdown-menu active-color="#0367fd">
+  <van-dropdown-item bind:change="onhomeChange" value="{{ value1 }}" options="{{ option1 }}" />
+</van-dropdown-menu>
+<view>
+  <van-tabs active="{{tabactive}}" bind:change="ontabChange">
+    <van-tab title="设备">
+      <scroll-view class="scroll-list">
+        <view wx:if="{{deviceList.length > 0}}" class="base-list">
+          <block wx:for="{{deviceList}}" wx:key="{{device.id}}" wx:for-index="idx" wx:for-item="device">
+            <view class="base-item {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToPanel" data-device="{{device}}">
+              <view class="base-icon">
+                <image class="base-icon-images" src="{{device.icon}}"/>
+              </view>
+              <view class="base-name">{{device.name}}</view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="房间">
+      <scroll-view class="scroll-list">
+        <view class="root">
+          <block wx:if="{{roomList.length > 0}}">
+          <block wx:for="{{roomList}}" wx:key="{{index}}" wx:for-item="room">
+            <view class="device-block" data-idx="{{ index }}" bindtap="jumpToroomPanel">
+              <text class="device-block-title">{{room.name}}</text>
+              <van-icon size="20" name="arrow" />
+            </view>
+          </block>
+          </block>
+          <block wx:else>
+            <view class="device-block" style="justify-content: center">
+              <text class="device-noitem">暂无房间</text>
+            </view>
+          </block>
+          <view class="device-block" style="justify-content: center"  bindtap="jumpToroomAdd">
+            <text class="device-remove">添加房间+</text>
+          </view>
+
+        </view>
+      </scroll-view>
+    </van-tab>
+    <van-tab title="场景">
+      <scroll-view class="scroll-list">
+        <view wx:if="{{scenesList.length > 0}}" class="base-list">
+          <block wx:for="{{scenesList}}" wx:key="{{index}}" wx:for-index="idx" wx:for-item="scenes">
+            <view class="base-item-scenes {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToscenesPanel" data-device="{{scenes}}">
+              <view class="base-icon-scenes">
+                <image class="base-icon-images" src="{{scenes.background}}"/>
+              </view>
+              <view class="base-name-scenes">{{scenes.name}}</view>
+            </view>
+          </block>
+          <view class="base-item-scenes-add {{(scenesList.length+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToscenesAdd" >
+              
+              <view class="base-name-add">添加场景</view>
+          </view>
+        </view>
+      </scroll-view>
+    </van-tab>
+  </van-tabs>
+</view>
+
+<van-dialog use-slot id="van-addroom" showConfirmButton showCancelButton  show="{{addroomshow}}" bind:close="onaddroomCancel" bind:confirm="onaddroomConfirm" bind:cancel="onaddroomCancel" title="添加房间">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{ addroomname }}" label="房间名称:" placeholder="{{ fieldroomname }}" border="{{ false }}" bind:change="onaddroomChange" />
+    </van-cell-group>
+    
+  </view>
+  <view class="dialog-button">
+      <van-button plain hairline round type="primary" size="mini" data-room="客厅" bind:click="roombutton">客厅</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-room="主卧" bind:click="roombutton">主卧</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-room="次卧" bind:click="roombutton">次卧</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-room="餐厅" bind:click="roombutton">餐厅</van-button>
+  </view>
+  <view class="dialog-button">
+      <van-button plain hairline round type="primary" size="mini" data-room="厨房" bind:click="roombutton">厨房</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-room="书房" bind:click="roombutton">书房</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-room="玄关" bind:click="roombutton">玄关</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-room="阳台" bind:click="roombutton">阳台</van-button>
+  </view>
+</van-dialog>
+
+<van-action-sheet show="{{ roomEditSelectshow }}" actions="{{ roomEditSelectactions }}" cancel-text="取消" bind:select="onroomEditSelect" bind:close="onroomEditSelectcancel" bind:cancel="onroomEditSelectcancel" safe-area-inset-bottom />
+
+<van-dialog use-slot id="van-dialog" showConfirmButton showCancelButton  show="{{roomEditdialogShow}}" bind:close="onroomEditdialogCancel" bind:confirm="onroomEditdialogConfirm" bind:cancel="onroomEditdialogCancel" title="房间信息">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{thisRoom.room_id}}" label="房间id:" disabled border="{{ false }}" />
+      <van-field value="{{ editroomname }}" label="房间名称:" placeholder="{{thisRoom.name}}" border="{{ false }}" bind:change="oneditnameChange" />
+    </van-cell-group>
+    
+  </view>
+  <view class="dalog-info">
+    <van-button icon="cross" round data-id="{{thisRoom.room_id}}" bind:click="dellRoom" type="danger">删除房间</van-button>
+  </view>
+</van-dialog>

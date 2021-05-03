@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "navbar": "../../../components/t_navbar/index",
+    "toast": "../../../components/t_toast/index"
+  },
+  "disableScroll":true
+}
+

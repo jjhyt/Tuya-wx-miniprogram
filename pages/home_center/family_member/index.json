@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-button": "@vant/weapp/button/index"
+  },
+  "navigationStyle":"default",
+  "navigationBarTitleText": "家庭成员管理",
+  "disableScroll": true
+}

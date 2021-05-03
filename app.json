@@ -1,0 +1,55 @@
+{
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/home_center/device_list/index"
+      },
+      {
+        "pagePath": "pages/home_center/home_list/index"
+      },
+      {
+        "pagePath": "pages/home_center/about/index"
+      }
+    ]
+  },
+  "pages": [
+    "pages/home_center/device_list/index",
+    "pages/guide/index",
+    "pages/home_center/common_panel/index",
+    "pages/home_center/device_manage/index",
+    "pages/cloud_check/index",
+    "pages/function_center/device_connect/index",
+    "pages/web_view/index",
+    "pages/base_function/index",
+    "pages/home_center/index",
+    "pages/home_center/other_panel/index",
+    "pages/home_center/statistics_panel/index",
+    "pages/home_center/about/index",
+    "pages/home_center/family/index",
+    "pages/home_center/home_list/index",
+    "pages/home_center/family_member/index",
+    "pages/home_center/scenes/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "plugins": {
+    "tuya-ap-plugin": {
+      "version": "3.3.19",
+      "provider": "wxd2aa51ffacc3ff86"
+    },
+    "tuya-message-center": {
+      "version": "1.0.1",
+      "provider": "wx88a79b7ae36fcbf5"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

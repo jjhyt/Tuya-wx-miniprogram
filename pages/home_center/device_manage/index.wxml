@@ -1,0 +1,27 @@
+<!--miniprogram/pages/home_center/device_manage/index.js.wxml-->
+<view class="root">
+  <view class="device-header">
+    <view class="device-icon">
+      <image class="device-images" src="{{device_icon}}" />
+    </view>
+    <text class="device-name">{{device_name}}</text>
+  </view>
+
+  <view class="device-block" bindtap="showDeviceInfo">
+    <text class="device-block-title">设备信息</text>
+    <van-icon size="20" name="arrow" />
+  </view>
+
+  <view class="device-block" style="justify-content: center"  bindtap="dellDevice">
+    <text class="device-remove">移除设备</text>
+  </view>
+</view>
+
+<van-dialog use-slot id="van-dialog" showConfirmButton showCancelButton  show="{{dialogShow}}" bind:close="ondialogCancel" bind:confirm="ondialogConfirm" bind:cancel="ondialogCancel" title="设备信息">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{device_id}}" label="设备id:" disabled border="{{ false }}" />
+      <van-field value="{{ namevalue }}" label="设备名称:" placeholder="{{device_name}}" border="{{ false }}" bind:change="onfieldChange" />
+    </van-cell-group>
+  </view>
+</van-dialog>

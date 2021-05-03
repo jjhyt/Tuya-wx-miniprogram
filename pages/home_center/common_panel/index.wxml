@@ -1,0 +1,64 @@
+<!--miniprogram/pages/home_center/common_panel/index.js.wxml-->
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+
+<view class="kg_root" style="position: relative; left: -2rpx; top: -2rpx">
+  <toast id="toast"></toast>
+  <image class="bgImage" src="{{imgList.bgImage}}" > </image>
+  <navbar device_name="{{device_name}}"  bind:jumpTodeviceEditPage="jumpTodeviceEditPage"></navbar>
+  <image class="dcImage" src="{{rwDpList['switch']['value'] ? imgList.dcOn : imgList.dcOff}}" bindtap="turnDeviceOn" ></image>
+  <text class="dcLabel">{{rwDpList['switch']['value'] ? '智能插座已开启' : '智能插座已关闭'}}</text>
+  <view>
+  <block wx:if="{{isRoDpListShow}}">
+  <view class="statuslist">
+    <block wx:for="{{roDpList}}" wx:key="{{item.code}}" wx:for-item="item" wx:for-index='idx'>
+      <view class="{{utils.countDpItem(roDpListLength,idx)}}">
+        <block wx:if="{{item.code == 'cur_current'}}">
+          <view class="roDpItem-dpName">实时电流</view>
+          <view class="roDpItem-status">{{item.value}}mA</view>
+        </block>
+        <block wx:elif="{{item.code == 'cur_power'}}">
+          <view class="roDpItem-dpName">实时功率</view>
+          <view class="roDpItem-status">{{item.value / 10}}w</view>
+        </block>
+        <block wx:else>
+          <view class="roDpItem-dpName">实时电压</view>
+          <view class="roDpItem-status">{{item.value / 10}}V</view>
+        </block>
+      </view>
+    </block>
+  </view>
+</block>
+<view class="statuslist">
+<block wx:if="{{isRwDpListShow}}">
+    <view class="{{roDpItem-one}}">
+      <view class="roDpItem-dpName">倒计时{{rwDpList['switch']['value'] ? '关闭' : '开启'}}</view>
+        <block wx:for="{{rwDpList}}" wx:key="{{item.code}}" wx:for-item="item">
+          <block wx:if="{{item.type === 'Integer'}}">
+            <view class="roDpItem-status">
+              <van-count-down time="{{ item.value * 1000 }}" format="HH 时 mm 分 ss 秒" />
+            </view>
+          </block>
+        </block>
+      </view>
+  </block>
+</view>
+</view>
+  <view class="kg_footer">
+    <view bindtap="turnDeviceOn" class="f-view">
+      <image class="fImage" src="{{rwDpList['switch']['value'] ? imgList.power : imgList.powerOff}}"></image>开关
+    </view>
+    <view bindtap="turnNoticeOn" class="f-view">
+      <image class="fImage" src="{{imgList.schedule}}"></image>定时
+    </view>
+    <view bindtap="CountdowmShow" class="f-view">
+      <image class="fImage" src="{{imgList.timer}}"></image>倒计时
+    </view>
+    <view bindtap="goStatiPage" class="f-view">
+      <image class="fImage" src="{{imgList.statistics}}"></image>用电量
+    </view>
+  </view>
+</view>
+<van-popup show="{{ timeshow }}" round position="bottom" bind:close="ontimeshowClose">
+  <van-datetime-picker title="设置倒计时{{rwDpList['switch']['value'] ? '关闭' : '开启'}}" value="{{ currenttimeDate }}" type="time" min-hour="0" max-hour="23" bind:input="ontimeshowInput" bind:confirm="ontimeshowConfirm" bind:cancel="ontimeshowClose" />
+</van-popup>

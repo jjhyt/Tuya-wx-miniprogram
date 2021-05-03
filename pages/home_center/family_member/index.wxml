@@ -1,0 +1,45 @@
+<!--pages/home_center/family_member/index.wxml-->
+<view class="root">
+  <block wx:for="{{memberList}}" wx:key="{{index}}" wx:for-item="member">
+    <view class="device-block" data-idx="{{index}}" bindtap="showMemberInfo">
+      <text class="device-block-title">{{member.name}} - {{member.admin ? '管理员' : '普通成员'}}</text>
+      <van-icon size="20" name="arrow" />
+    </view>
+  </block>
+  <view class="device-block" style="justify-content: center"  bindtap="addMember">
+    <text class="device-remove">添加成员+</text>
+  </view>
+  <view class="device-block" style="justify-content: center"  bindtap="testClick">
+    <text class="device-remove">测试场景+</text>
+  </view>
+</view>
+
+<van-dialog use-slot id="van-dialog" showConfirmButton showCancelButton  show="{{dialogShow}}" bind:close="ondialogCancel" bind:confirm="ondialogConfirm" bind:cancel="ondialogCancel" title="成员信息">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{thisMember.uid}}" label="成员id:" disabled border="{{ false }}" />
+      <van-field value="{{ namevalue }}" label="成员名称:" disabled placeholder="{{thisMember.name}}" border="{{ false }}" bind:change="onfieldChange" />
+      <van-field value="{{thisMember.member_account}}" label="成员账号:" disabled border="{{ false }}" />
+      <view class="dalog-info">
+        <van-checkbox value="{{ adminchecked }}" bind:change="onadminChange">是否管理员</van-checkbox>
+      </view>
+    </van-cell-group>
+    
+  </view>
+  <view class="dalog-info">
+    <van-button icon="cross" round data-id="{{thisMember.uid}}" bind:click="dellMember" type="danger">删除成员</van-button>
+  </view>
+</van-dialog>
+
+<van-dialog use-slot id="van-adddialog" showConfirmButton showCancelButton  show="{{adddialogShow}}" bind:close="onadddialogCancel" bind:confirm="onadddialogConfirm" bind:cancel="onadddialogCancel" title="添加家庭成员">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{ addnamevalue }}" label="成员名称:" placeholder="输入成员名称" border="{{ false }}" bind:change="onaddfieldChange" />
+      <van-field value="{{ addaccountvalue }}" label="成员账号:" placeholder="输入成员账号" border="{{ false }}" bind:change="onaddaccountChange" />
+      <view class="dalog-info">
+        <van-checkbox value="{{ addadminchecked }}" bind:change="onaddadminChange">是否管理员</van-checkbox>
+      </view>
+    </van-cell-group>
+  </view>
+</van-dialog>
+

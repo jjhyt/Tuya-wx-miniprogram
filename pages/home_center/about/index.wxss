@@ -1,0 +1,23 @@
+/* pages/home_center/about/index.wxss */
+.topimg {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  line-height: 12px;
+  flex-wrap: wrap;
+}
+.toptxt {
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  font-family: PingFangSC-Regular;
+  font-size: 38rpx;
+  font-weight:500;
+  line-height: 44rpx;
+  text-align: center;
+  color: rgba(40, 78, 248, 0.9);
+}
+.topgg {
+  padding-top: 30px;
+  display: flex;
+}

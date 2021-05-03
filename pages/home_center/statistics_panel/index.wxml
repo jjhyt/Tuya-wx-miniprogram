@@ -1,0 +1,40 @@
+<!--pages/home_center/statistics_panel/index.wxml-->
+<canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler"></canvas>
+<view class="statuslist">
+  <view class="roDpItem-normal">
+    <view class="roDpItem-dpName">总计用电量</view>
+    <view class="roDpItem-status">{{list_data.sum}}kwh</view>
+  </view>
+  <view class="roDpItem-normal">
+    <view class="roDpItem-dpName">今日用电量</view>
+    <view class="roDpItem-status">{{list_data.thisDay}}kwh</view>
+  </view>
+  <view class="roDpItem-normal">
+    <block wx:for="{{year_data}}">
+      <view class="roDpItem-dpName">{{index}}月用电量</view>
+      <view class="roDpItem-status">{{item}}kwh</view>
+    </block>
+  </view>
+</view>
+
+<van-cell-group>
+  <van-cell bind:click="onribaoDisplay" title="日报表" is-link value="{{ ribaodate }}" border="{{ false }}" icon="notes-o" />
+  <van-popup show="{{ ribaoshow }}" bind:close="onribaoClose" round position="bottom" > 
+    <van-datetime-picker type="date" value="{{ ribaocurrentDate }}" bind:input="onribaoInput" bind:confirm="onribaoConfirm" bind:cancel="onribaoClose" min-date="{{ ribaominDate }}" formatter="{{ ribaoformatter }}" />
+  </van-popup>
+  <van-cell bind:click="jinriClick" title="今日报表({{thisdayString}})" is-link value=""  />
+</van-cell-group>
+<van-cell-group>
+  <van-cell bind:click="onyuebaoDisplay" title="月报表" is-link value="{{ yuebaodate }}" border="{{ false }}" icon="notes-o" />
+  <van-popup show="{{ yuebaoshow }}" bind:close="onyuebaoClose" round position="bottom" > 
+    <van-datetime-picker type="year-month" value="{{ ribaocurrentDate }}" bind:input="onyuebaoInput" bind:confirm="onyuebaoConfirm" bind:cancel="onyuebaoClose" min-date="{{ ribaominDate }}" formatter="{{ ribaoformatter }}" />
+  </van-popup>
+  <van-cell bind:click="benyueClick" title="本月报表({{thismonString}})" is-link value=""  />
+</van-cell-group>
+<van-cell-group>
+  <van-cell bind:click="onnianbaoDisplay" title="年报表" is-link value="{{ nianbaodate }}" border="{{ false }}" icon="notes-o" />
+  <van-popup show="{{ nianbaoshow }}" bind:close="onnianbaoClose" round position="bottom" > 
+    <van-picker show-toolbar columns="{{ niancolumns }}" default-index="{{ 3 }}" bind:change="onnianbaoChange" bind:cancel="onnianbaoClose" bind:confirm="onnianbaoConfirm" />
+  </van-popup>
+  <van-cell bind:click="nianClick" title="年报表({{thisyearString}})" is-link value=""  />
+</van-cell-group>

@@ -1,0 +1,47 @@
+<!--pages/home_center/family/index.wxml-->
+<view class="root">
+  <block wx:for="{{familyList}}" wx:key="{{index}}" wx:for-item="family">
+    <view class="device-block" data-idx="{{index}}" bindtap="showHomeInfoselect">
+      <text class="device-block-title">{{family.name}}</text>
+      <van-icon size="20" name="arrow" />
+    </view>
+  </block>
+  <view class="device-block" style="justify-content: center"  bindtap="addHome">
+    <text class="device-remove">增加家庭+</text>
+  </view>
+  <view class="device-block" style="justify-content: center"  bindtap="addHomeShare">
+    <text class="device-remove">加入家庭+</text>
+  </view>
+</view>
+
+<van-dialog use-slot id="van-dialog" showConfirmButton showCancelButton  show="{{dialogShow}}" bind:close="ondialogCancel" bind:confirm="ondialogConfirm" bind:cancel="ondialogCancel" title="家庭信息">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{thisHome.home_id}}" label="家庭id:" disabled border="{{ false }}" />
+      <van-field value="{{ namevalue }}" label="家庭名称:" placeholder="{{thisHome.name}}" border="{{ false }}" bind:change="onfieldChange" />
+      <van-field value="{{thisHome.geo_name}}" label="家庭位置:" disabled border="{{ false }}" />
+    </van-cell-group>
+    
+  </view>
+  <view class="dalog-info">
+    <van-button icon="cross" round data-id="{{thisHome.home_id}}" bind:click="dellHome" type="danger">删除家庭</van-button>
+  </view>
+</van-dialog>
+
+<van-dialog use-slot id="van-adddialog" showConfirmButton showCancelButton  show="{{adddialogShow}}" bind:close="onadddialogCancel" bind:confirm="onadddialogConfirm" bind:cancel="onadddialogCancel" title="添加家庭">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{ addnamevalue }}" label="家庭名称:" placeholder="输入家庭名称" border="{{ false }}" bind:change="onaddfieldChange" />
+    </van-cell-group>
+  </view>
+</van-dialog>
+
+<van-dialog use-slot id="van-addshare" showConfirmButton showCancelButton  show="{{addShareShow}}" bind:close="onaddShareCancel" bind:confirm="onaddShareConfirm" bind:cancel="onaddShareCancel" title="加入家庭">
+  <view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{ addSharevalue }}" label="分享票据:" placeholder="输入家庭分享码" border="{{ false }}" bind:change="onaddSharefieldChange" />
+    </van-cell-group>
+  </view>
+</van-dialog>
+
+<van-action-sheet show="{{ familyEditSelectshow }}" actions="{{ familyEditSelectactions }}" cancel-text="取消" bind:select="onfamilyEditSelect" bind:close="onfamilyEditSelectcancel" bind:cancel="onfamilyEditSelectcancel" safe-area-inset-bottom />

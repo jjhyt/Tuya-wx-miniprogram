@@ -1,0 +1,13 @@
+<!--pages/home_center/about/index.wxml-->
+<view class = "topimg">
+  <van-image round width="50px" height="50px" src="/image/home.png" />
+  </view>
+<view class = "toptxt">
+  <text>小 小 智 能 家</text>
+</view>
+<view class = "topgg"></view>
+<van-cell title="家庭管理" icon="wap-home-o" size="large" bind:click="homeClick" is-link />
+<view class = "topgg"></view>
+<van-cell title="消息中心" icon="comment-o" size="large" bind:click="msgClick" is-link />
+<view class = "topgg"></view>
+<van-cell title="当前版本" value="V 0.0.1" icon="info-o" size="large"  />
