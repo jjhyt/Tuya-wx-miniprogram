@@ -5,7 +5,7 @@
 </van-dropdown-menu>
 <view>
   <van-tabs active="{{tabactive}}" bind:change="ontabChange">
-    <van-tab title="设备">
+    <van-tab title="主页">
       <scroll-view class="scroll-list">
         <view wx:if="{{deviceList.length > 0}}" class="base-list">
           <block wx:for="{{deviceList}}" wx:key="{{device.id}}" wx:for-index="idx" wx:for-item="device">
@@ -42,11 +42,11 @@
         </view>
       </scroll-view>
     </van-tab>
-    <van-tab title="场景">
+    <van-tab title="场景管理">
       <scroll-view class="scroll-list">
         <view wx:if="{{scenesList.length > 0}}" class="base-list">
           <block wx:for="{{scenesList}}" wx:key="{{index}}" wx:for-index="idx" wx:for-item="scenes">
-            <view class="base-item-scenes {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToscenesPanel" data-device="{{scenes}}">
+            <view class="base-item-scenes {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToscenesPanel" data-scenes="{{scenes}}">
               <view class="base-icon-scenes">
                 <image class="base-icon-images" src="{{scenes.background}}"/>
               </view>

@@ -1,15 +1,22 @@
 <!--pages/home_center/scenes/index.wxml-->
-<view>
+<wxs module = "FixJson" src= "index.wxs"></wxs>
+<view class = "base-scenes">
   <van-cell-group>
-  <van-field label="场景名：" value="{{ scenesnamevalue }}" placeholder="请输入场景名称" bind:change="onscenesnameChange" />
+  <van-field label="场景名：" value="{{ scenesnamevalue }}" placeholder="{{ thisScenes.name }}" bind:change="onscenesnameChange" />
 </van-cell-group>
 </view>
-<view>
+<view class="base-scenes">
   <van-cell-group  title="任务：">
-    <van-cell title="单元格" value="内容" label="描述信息" is-link border="{{ false }}" bind:click="actionsClick" />
-    <van-cell title="单元格" value="内容" label="描述信息" is-link border="{{ false }}" />
+    <block wx:for="{{actionsList}}" wx:key="{{index}}" wx:for-item="actions">
+      <van-cell center title="{{actions.name}}" icon="{{actions.icon}}" value="修改" label="{{ FixJson.toFix(actions.executor_property) }}" is-link border="{{ false }}" data-idx="{{index}}" bind:click="actionsClick" />
+    </block>
+
+    <van-cell center title="新增任务" icon="plus" value="新增" label="点击输入新增任务" is-link border="{{ false }}" bind:click="actionsaddClick" />
   </van-cell-group>
 </view>
-<view>
-  <van-button  icon="star-o" plain round type="info" bind:click="scenesSaveClick" >保存</van-button>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="scenesSaveClick" >保存</van-button>
+</view>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="cross" plain round type="danger" bind:click="scenesDeleteClick" >删除</van-button>
 </view>

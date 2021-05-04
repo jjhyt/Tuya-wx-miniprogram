@@ -1,4 +1,4 @@
-/* pages/home_center/scenes/index.wxss */
+/* pages/home_center/scenes/editdevice.wxss */
 .base-scenes {
   margin-top: 50rpx;
 }

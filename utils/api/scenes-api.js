@@ -81,3 +81,16 @@ export const scenesPictures = () => {
     }
   })
 }
+
+//获取设备支持的指令集和状态集
+export const deviceSpec = (device_id) => {
+  return wx.cloud.callFunction({
+    name: 'ty-service',
+    data: {
+      "action": "device.specifications",
+      "params": {
+        "device_id":device_id
+      }
+    }
+  })
+}

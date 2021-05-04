@@ -32,7 +32,9 @@
     "pages/home_center/family/index",
     "pages/home_center/home_list/index",
     "pages/home_center/family_member/index",
-    "pages/home_center/scenes/index"
+    "pages/home_center/scenes/index",
+    "pages/home_center/scenes/editmiss",
+    "pages/home_center/scenes/editdevice"
   ],
   "window": {
     "backgroundTextStyle": "light",
