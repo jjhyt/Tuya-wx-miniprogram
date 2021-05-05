@@ -10,7 +10,8 @@ Page({
     thisActions:"",
     deviceList:"",
     home_id:"",
-    idx:""
+    idx:"",
+    type: ""
   },
 
   /**
@@ -20,6 +21,7 @@ Page({
     const actionsList = JSON.parse(options.actionsList)
     const home_id = options.home_id
     const idx = options.idx
+    const type = options.type
     const thisActions = actionsList[idx]
     const deviceList = await getHomeDeviceList(home_id)
     deviceList.forEach(item => {
@@ -29,6 +31,7 @@ Page({
       actionsList:actionsList,
       thisActions:thisActions,
       deviceList:deviceList,
+      type:type,
       home_id:home_id,
       idx:idx
      })
@@ -109,10 +112,15 @@ Page({
   },
   //保存设备动作数据到前一页
   deviceSaveClick:function () {
-    var {actionsList, idx, thisActions} = this.data
+    var {actionsList, type, idx, thisActions} = this.data
     var pages = getCurrentPages()
     var prevPage = pages[pages.length - 2]
-    actionsList[idx] = thisActions
+    if (type == "no") {
+      actionsList[idx] = thisActions
+    }else {
+      actionsList.push(thisActions)
+    }
+    
     prevPage.setData ({
       actionsList:actionsList
     })
@@ -120,6 +128,6 @@ Page({
       delta: 1,  // 返回上一级页面。
       
     })
-
+    console.log(actionsList)
   }
 })

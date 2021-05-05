@@ -202,6 +202,13 @@ Page({
     this.setData({
       timeshow:false,
     })
-  }
+  },
+  //跳转定时页面
+  timerShow: function(){
+    const { device_id } = this.data
+    wx.navigateTo({
+      url: `/pages/home_center/common_panel/timer?device_id=${device_id}`,
+    })
+  },
 })
 

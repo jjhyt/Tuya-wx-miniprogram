@@ -7,6 +7,14 @@
   <van-tabs active="{{tabactive}}" bind:change="ontabChange">
     <van-tab title="主页">
       <scroll-view class="scroll-list">
+        <view wx:if="{{scenesList.length > 0}}" class="base-list">
+          <block wx:for="{{scenesList}}" wx:key="{{index}}" wx:for-index="idx" wx:for-item="scenes">
+            <view class="base-item-up {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="scenesClick" data-scenes="{{scenes}}">
+             <image class="base-item-up-image" src="{{scenes.background}}"/>
+              <view class="base-name-scenes">{{scenes.name}}</view>
+            </view>
+          </block>
+        </view>
         <view wx:if="{{deviceList.length > 0}}" class="base-list">
           <block wx:for="{{deviceList}}" wx:key="{{device.id}}" wx:for-index="idx" wx:for-item="device">
             <view class="base-item {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToPanel" data-device="{{device}}">
@@ -46,10 +54,8 @@
       <scroll-view class="scroll-list">
         <view wx:if="{{scenesList.length > 0}}" class="base-list">
           <block wx:for="{{scenesList}}" wx:key="{{index}}" wx:for-index="idx" wx:for-item="scenes">
-            <view class="base-item-scenes {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToscenesPanel" data-scenes="{{scenes}}">
-              <view class="base-icon-scenes">
-                <image class="base-icon-images" src="{{scenes.background}}"/>
-              </view>
+            <view class="base-item-up {{(idx+1)%2 !== 0 && 'base-item-left'}}" bindtap="jumpToscenesPanel" data-scenes="{{scenes}}">
+             <image class="base-item-up-image" src="{{scenes.background}}"/>
               <view class="base-name-scenes">{{scenes.name}}</view>
             </view>
           </block>

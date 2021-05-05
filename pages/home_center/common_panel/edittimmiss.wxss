@@ -1,0 +1,25 @@
+/* pages/home_center/common_panel/edittimmiss.wxss */
+.base-scenes {
+  margin-top: 50rpx;
+}
+
+.base-scenes-button {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}
+.slider-class {
+  margin-top: 30rpx;
+  height: 100rpx;
+}
+.slider-class-button {
+  margin-top: 30rpx;
+  height: 100rpx;
+  align-content: center;
+}
+.tui-slider-box {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 35rpx;
+  color: #666;
+ }

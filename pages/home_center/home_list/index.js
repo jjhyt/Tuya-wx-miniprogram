@@ -310,16 +310,42 @@ Page({
     this.onShow()
   },
 
+  //点击执行场景
+  scenesClick: function(e){
+    var data = e.currentTarget.dataset.scenes
+    var { thisHomeidx, familyList } = this.data
+    var home_id = familyList[thisHomeidx].home_id
+    scenesTrigger(home_id, data.scene_id)
+    wx.showToast({
+      title: '场景执行成功',
+      icon: 'success',
+      duration: 2000
+    })
+    //console.log(data)
+  },
   //跳转编辑场景页面
   jumpToscenesPanel: function(e){
     var data = e.currentTarget.dataset.scenes
     var { thisHomeidx, familyList } = this.data
     var home_id = familyList[thisHomeidx].home_id
     var datastr = JSON.stringify(data)
+    var type = "edit"
     console.log(datastr)
     wx.navigateTo({
-      url: `/pages/home_center/scenes/index?home_id=${home_id}&scenes=${datastr}`,
+      url: `/pages/home_center/scenes/index?home_id=${home_id}&type=${type}&scenes=${datastr}`,
     })
   },
-
+  //跳转新增场景
+  jumpToscenesAdd: function(){
+    //var data = e.currentTarget.dataset.scenes
+    var { thisHomeidx, familyList } = this.data
+    var home_id = familyList[thisHomeidx].home_id
+    //var datastr = JSON.stringify(data)
+    var datastr = "no"
+    var type = "add"
+    console.log(datastr)
+    wx.navigateTo({
+      url: `/pages/home_center/scenes/index?home_id=${home_id}&type=${type}&scenes=${datastr}`,
+    })
+  },
 })

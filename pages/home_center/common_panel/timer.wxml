@@ -1,0 +1,30 @@
+<!--pages/home_center/common_panel/timer.wxml-->
+<wxs module = "FixJson" src= "index.wxs"></wxs>
+  <view class = "base-scenes">
+    <text>定时可能存在30秒左右误差</text>
+    <van-collapse accordion value="{{ activegroupsName }}" bind:change="ongroupsChange">
+      <block wx:for="{{timerListresultgroups}}" wx:key="{{index}}" wx:for-index="idx" wx:for-item="groups">
+        <van-collapse-item title="定时组ID：{{ groups.id }}" name="{{ idx }}">
+          <block wx:for="{{thisgroups.timers}}" wx:key="{{index}}" wx:for-index="timersidx" wx:for-item="timers">
+            <van-swipe-cell id="swipe-cell" data-idx="{{timersidx}}" bind:click="ontimerClick" right-width="{{ 65 }}" left-width="{{ 65 }}">
+              <view slot="left" class="van-swipe-cell__left">启用</view>
+              <van-cell-group>
+                <van-cell center size="large" is-link title="{{timers.date}} - {{timers.time}} - 启用{{timers.status}}" value="{{FixJson.toFix(timers.functions)}}" label="重复：{{timers.loops}}" />
+              </van-cell-group>
+              <view slot="right" class="van-swipe-cell__right">编辑</view>
+            </van-swipe-cell>
+          </block>
+          <view class="base-scenes-button">
+            <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="timerAddClick" >添加定时</van-button>
+          </view>
+          <view class="base-scenes-button">
+            <van-button style="width: 400rpx" block icon="success" plain round type="info" bind:click="timerEditClick" >保存定时组</van-button>
+          </view>
+          <view class="base-scenes-button">
+            <van-button style="width: 400rpx" block icon="cross" plain round type="danger" bind:click="timerDelClick" >删除定时组</van-button>
+          </view>
+        </van-collapse-item>
+      </block>
+    </van-collapse>
+  </view>
+

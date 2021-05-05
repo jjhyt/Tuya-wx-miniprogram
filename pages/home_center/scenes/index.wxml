@@ -14,9 +14,16 @@
     <van-cell center title="新增任务" icon="plus" value="新增" label="点击输入新增任务" is-link border="{{ false }}" bind:click="actionsaddClick" />
   </van-cell-group>
 </view>
+<block wx:if="{{type == 'edit'}}">
 <view class="base-scenes-button">
   <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="scenesSaveClick" >保存</van-button>
 </view>
 <view class="base-scenes-button">
   <van-button style="width: 400rpx" block icon="cross" plain round type="danger" bind:click="scenesDeleteClick" >删除</van-button>
 </view>
+</block>
+<block wx:else>
+  <view class="base-scenes-button">
+    <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="scenesAddClick" >新增</van-button>
+  </view>
+</block>

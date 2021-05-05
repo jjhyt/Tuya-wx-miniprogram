@@ -12,5 +12,5 @@
   },
   "navigationStyle":"default",
   "navigationBarTitleText": "我的家庭",
-  "disableScroll": true
+  "disableScroll": false
 }

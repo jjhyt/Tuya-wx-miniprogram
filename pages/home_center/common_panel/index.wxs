@@ -1,0 +1,8 @@
+var FixJson = {
+  toFix: function(value){
+    return JSON.stringify(value)
+  }
+}
+module.exports = {
+  toFix: FixJson.toFix,
+}

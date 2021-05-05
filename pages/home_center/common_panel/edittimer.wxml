@@ -1,0 +1,43 @@
+<!--pages/home_center/common_panel/edittimer.wxml-->
+<view class = "base-scenes">
+    <van-cell-group  title="设置时间：（注意设置晚于现在的时间）">
+      <van-cell center title="{{thisdate}} - {{thistime}}" icon="clock-o" value="修改"  is-link bind:click="timerselectClick" />
+    </van-cell-group>
+</view>
+<view class = "base-checkbox">
+    <van-checkbox value="{{ Sunchecked }}" bind:change="onSunChange">周日</van-checkbox>
+    <van-checkbox value="{{ Monchecked }}" bind:change="onMonChange">周一</van-checkbox>
+    <van-checkbox value="{{ Tuechecked }}" bind:change="onTueChange">周二</van-checkbox>
+    <van-checkbox value="{{ Wedchecked }}" bind:change="onWedChange">周三</van-checkbox>
+    <van-checkbox value="{{ Thuchecked }}" bind:change="onThuChange">周四</van-checkbox>
+    <van-checkbox value="{{ Frichecked }}" bind:change="onFriChange">周五</van-checkbox>
+    <van-checkbox value="{{ Satchecked }}" bind:change="onSatChange">周六</van-checkbox>
+</view>
+
+<block wx:if="{{true}}">
+  <view class = "base-scenes">
+    <van-cell-group  title="编辑设备动作：">
+      <van-cell center title="{{actionsList[idx].name}}" icon="{{actionsList[idx].icon}}" value="修改" label="{{ FixJson.toFix(actionsList[idx].executor_property) }}" is-link border="{{ false }}" data-id="{{actionsList[idx].entity_id}}" bind:click="atactionsClick" />
+    </van-cell-group>
+  </view>
+</block>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="actionsAddClick" >添加动作</van-button>
+</view>
+
+<view class="base-scenes">
+  <van-cell-group  title="最终执行设备动作：">
+      <van-cell center title="{{thisActions.name}}" icon="{{thisActions.icon}}" label="{{ FixJson.toFix(thisActions.executor_property) }}" border="{{ false }}" />
+  </van-cell-group>
+</view>
+
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="timerAddClick" >保存</van-button>
+</view>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="cross" plain round type="danger" bind:click="timerAddClick" >删除</van-button>
+</view>
+
+<van-popup show="{{ timeshow }}" round position="bottom" bind:close="ontimeshowClose">
+  <van-datetime-picker title="设置时间" value="{{ currenttimeDate }}" type="time" min-hour="0" max-hour="23" bind:input="ontimeshowInput" bind:confirm="ontimeshowConfirm" bind:cancel="ontimeshowClose" />
+</van-popup>

@@ -1,12 +1,14 @@
 {
   "usingComponents": {
-    
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
     "van-field": "@vant/weapp/field/index",
     "van-button": "@vant/weapp/button/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index"
   },
   "navigationStyle":"default",
-  "navigationBarTitleText": "编辑设备",
+  "navigationBarTitleText": "编辑定时",
   "disableScroll": false
 }

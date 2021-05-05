@@ -1,6 +1,7 @@
 // pages/home_center/family_member/index.js
 import { getMemberList, addMember, deleteMember } from '../../../utils/api/family-api'
 import { scenesAdd } from '../../../utils/api/scenes-api'
+import { timerAdd } from '../../../utils/api/timer-api'
 
 Page({
 
@@ -141,16 +142,29 @@ dellMember: function(e){
 },
   //添加一个测试场景
   testClick: function(){
-    var {home_id} = this.data
-    var name = '测试场景1'
-    var background = 'https://images.tuyacn.com/smart/rule/cover/sport.png'
-    var actions = [{
-        "entity_id":"327508562cf43233d356",
-        "executor_property":{
-            "switch":true
-        }
+    // var {home_id} = this.data
+    // var name = '测试场景1'
+    // var background = 'https://images.tuyacn.com/smart/rule/cover/sport.png'
+    // var actions = [{
+    //     "entity_id":"327508562cf43233d356",
+    //     "executor_property":{
+    //         "switch":true
+    //     }
+    //   }]
+    // scenesAdd(home_id,name,background,actions)
+    var device_id = "327508562cf43233d356"
+    var loops = "0000000"
+    var category = "test"
+    var instruct = [{
+          "functions":[
+              {
+                  "code":"switch",
+                  "value":true
+              }
+          ],
+          "date":"20210506",
+          "time":"21:21"
       }]
-    scenesAdd(home_id,name,background,actions)
-
+    timerAdd( device_id, loops, category, instruct )
   }
 })

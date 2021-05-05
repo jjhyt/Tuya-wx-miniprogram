@@ -1,0 +1,43 @@
+/* pages/home_center/common_panel/timer.wxss */
+.base-scenes {
+  margin-top: 50rpx;
+}
+text {
+  flex: 1;
+	height: 24px;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	line-height: 24px;
+	color: #f55a12;
+}
+
+.base-scenes-button {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.van-swipe-cell__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 44px;
+  font-size: 16px;
+  line-height: 44px;
+  color: #000;
+  text-align: center;
+  background-color: rgb(207, 207, 207);
+}
+.van-swipe-cell__right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 44px;
+  font-size: 16px;
+  line-height: 44px;
+  color: #000;
+  text-align: center;
+  background-color: rgb(168, 135, 135);
+}

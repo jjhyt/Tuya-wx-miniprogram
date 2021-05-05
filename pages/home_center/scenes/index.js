@@ -8,19 +8,34 @@ Page({
   data: {
     scenesnamevalue: "",
     thisScenes: "",
-    actionsList: ""
+    actionsList: "",
+    type:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const thisScenes = JSON.parse(options.scenes)
+    var thisScenesstr = options.scenes
+    const type = options.type
+    var thisScenes = ""
+    if (thisScenesstr == "no") {
+      thisScenes = {
+        "actions": [],
+        "background": "https://images.tuyacn.com/smart/rule/cover/sport.png",
+        "enabled": true,
+        "name": "场景1"
+      }
+    }else {
+      thisScenes = JSON.parse(thisScenesstr)
+    }
     const home_id = options.home_id
+    
     this.setData({ 
       thisScenes:thisScenes,
       scenesnamevalue: thisScenes.name,
-      home_id:home_id
+      home_id:home_id,
+      type:type
      })
      
      var actionsList = thisScenes.actions
@@ -85,6 +100,32 @@ Page({
       scenesnamevalue:event.detail
      })
   },
+  //点击新增按钮
+  scenesAddClick: function(){
+    var {home_id, thisScenes, scenesnamevalue, actionsList} = this.data
+    // var actionsJson = []
+    // for (var i=0;i<actionsList.length;i++){
+    //   let Json = {
+    //     "entity_id":actionsList[i].entity_id,
+    //     "executor_property":actionsList[i].executor_property
+    //   }
+    //   actionsJson.push(Json)
+    // }
+    // console.log(actionsJson)
+    // console.log(scenesnamevalue)
+    // console.log(home_id)
+    // console.log(thisScenes)
+    scenesAdd(home_id, scenesnamevalue, thisScenes.background, actionsList)
+    wx.showToast({
+      title: '添加成功',
+      icon: 'success',
+      duration: 2000
+    })
+    wx.navigateBack({
+      delta: 1,  // 返回上一级页面。
+      
+    })
+  },
   //保存按钮
   scenesSaveClick: function(){
     var {home_id, thisScenes, scenesnamevalue, actionsList} = this.data
@@ -130,9 +171,22 @@ Page({
     var idx = e.currentTarget.dataset.idx
     var {home_id, actionsList} = this.data
     var actionsListstr = JSON.stringify(actionsList)
+    var type = "no"
     console.log(actionsListstr)
     wx.navigateTo({
-      url: `/pages/home_center/scenes/editdevice?home_id=${home_id}&idx=${idx}&actionsList=${actionsListstr}`,
+      url: `/pages/home_center/scenes/editdevice?home_id=${home_id}&idx=${idx}&type=${type}&actionsList=${actionsListstr}`,
+    })
+  },
+  //新增任务
+  actionsaddClick: function(){
+    
+    var {home_id, actionsList} = this.data
+    var idx = actionsList.length + 1
+    var actionsListstr = JSON.stringify(actionsList)
+    var type = "add"
+    console.log(actionsListstr)
+    wx.navigateTo({
+      url: `/pages/home_center/scenes/editdevice?home_id=${home_id}&idx=${idx}&type=${type}&actionsList=${actionsListstr}`,
     })
   },
 })

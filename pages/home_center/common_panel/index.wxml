@@ -48,7 +48,7 @@
     <view bindtap="turnDeviceOn" class="f-view">
       <image class="fImage" src="{{rwDpList['switch']['value'] ? imgList.power : imgList.powerOff}}"></image>开关
     </view>
-    <view bindtap="turnNoticeOn" class="f-view">
+    <view bindtap="timerShow" class="f-view">
       <image class="fImage" src="{{imgList.schedule}}"></image>定时
     </view>
     <view bindtap="CountdowmShow" class="f-view">

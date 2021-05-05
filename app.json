@@ -34,7 +34,10 @@
     "pages/home_center/family_member/index",
     "pages/home_center/scenes/index",
     "pages/home_center/scenes/editmiss",
-    "pages/home_center/scenes/editdevice"
+    "pages/home_center/scenes/editdevice",
+    "pages/home_center/common_panel/timer",
+    "pages/home_center/common_panel/edittimer",
+    "pages/home_center/common_panel/edittimmiss"
   ],
   "window": {
     "backgroundTextStyle": "light",

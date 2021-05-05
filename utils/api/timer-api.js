@@ -28,7 +28,7 @@ export const timerAdd = (device_id, loops, category, instruct) => {
         "device_id":device_id,
         "loops":loops,
         "category":category,
-        "timezone_id":"Asia/Shanghai",  //时区固定为上海
+        "timezone_id":"Asia/Shanghai",
         "time_zone":"+8:00",
         "instruct":instruct
       }

@@ -1,6 +1,6 @@
 <!--pages/home_center/scenes/editdevice.wxml-->
 <wxs module = "FixJson" src= "index.wxs"></wxs>
-<block wx:if="{{actionsList.length>0}}">
+<block wx:if="{{type == 'no'}}">
   <view class = "base-scenes">
     <van-cell-group  title="编辑现有设备：">
       <van-cell center title="{{actionsList[idx].name}}" icon="{{actionsList[idx].icon}}" value="修改" label="{{ FixJson.toFix(actionsList[idx].executor_property) }}" is-link border="{{ false }}" data-id="{{actionsList[idx].entity_id}}" bind:click="atactionsClick" />

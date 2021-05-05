@@ -10,7 +10,7 @@
     <text class="device-remove">添加成员+</text>
   </view>
   <view class="device-block" style="justify-content: center"  bindtap="testClick">
-    <text class="device-remove">测试场景+</text>
+    <text class="device-remove">测试定时+</text>
   </view>
 </view>
 

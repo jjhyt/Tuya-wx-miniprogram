@@ -1,0 +1,16 @@
+/* pages/home_center/common_panel/edittimer.wxss */
+.base-scenes {
+  margin-top: 50rpx;
+}
+
+.base-checkbox {
+  margin-top: 50rpx;
+  flex-direction: row;
+  display: flex;
+}
+
+.base-scenes-button {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}
