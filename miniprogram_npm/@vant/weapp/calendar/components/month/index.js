@@ -25,13 +25,13 @@ VantComponent({
       observer: 'setDays',
     },
     showMark: Boolean,
-    rowHeight: null,
+    rowHeight: [Number, String],
     formatter: {
       type: null,
       observer: 'setDays',
     },
     currentDate: {
-      type: null,
+      type: [null, Array],
       observer: 'setDays',
     },
     allowSameDay: Boolean,

@@ -37,13 +37,14 @@ export const timerAdd = (device_id, loops, category, instruct) => {
 }
 
 //修改定时任务
-export const timerEdit = (device_id, loops, category, instruct) => {
+export const timerEdit = (device_id, group_id, loops, category, instruct) => {
   return request({
     name: 'ty-service',
     data: {
       "action": "timer.edit",
       "params": {
         "device_id":device_id,
+        "group_id":group_id,
         "loops":loops,
         "category":category,
         "timezone_id":"Asia/Shanghai",  //时区固定为上海
@@ -83,14 +84,16 @@ export const timerList = (device_id) => {
   })
 }
 
-// 删除设备下的所有定时任务
-export const timerDelete = (device_id) => {
+// 删除某个分类下面的某个定时组的定时任务
+export const timerDelete = (device_id, category, group_id) => {
   return request({
     name: 'ty-service',
     data: {
-      action: 'timer.delete',
+      action: 'timer.deleteByGroup',
       params: {
-        device_id
+        "device_id": device_id,
+        "category": category,
+        "group_id": group_id
       }
     }
   })

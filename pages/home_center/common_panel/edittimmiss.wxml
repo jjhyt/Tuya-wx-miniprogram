@@ -1,8 +1,8 @@
 <!--pages/home_center/common_panel/edittimmiss.wxml-->
 <view class = "base-scenes">
   <van-cell-group>
-  <van-field label="分类：" disabled value="{{ thisdeviceSpec.category }}" />
-</van-cell-group>
+    <van-cell center title="{{ device_name }}" icon="https://images.tuyacn.com/{{ icon }}" />
+  </van-cell-group>
 </view>
 <view class="base-scenes">
   <van-cell-group  title="可执行动作：">
@@ -14,6 +14,9 @@
 </view>
 <view class="base-scenes-button">
   <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="functionsSaveClick" >保存</van-button>
+</view>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="cross" plain round type="danger" bind:click="functionsDelClick" >删除</van-button>
 </view>
 
 <van-action-sheet title="{{ acshowtittle }}" show="{{ acshow }}" actions="{{ missactions }}" cancel-text="取消" bind:close="onacshowClose" bind:cancel="onacshowClose" bind:select="onacshowSelect" />
@@ -27,4 +30,5 @@
   <view class="base-scenes-button">
     <van-button style="width: 400rpx" block plain round type="info" bind:click="sliderSaveClick" >确定</van-button>
   </view>
+  
 </van-action-sheet>

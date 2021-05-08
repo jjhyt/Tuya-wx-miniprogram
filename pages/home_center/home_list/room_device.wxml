@@ -1,0 +1,23 @@
+<!--pages/home_center/home_list/room_device.wxml-->
+<view class = "base-device">
+    <van-cell-group>
+      <van-cell center title="房间名称：" icon="wap-home-o" value="{{ roomname }}" />
+    </van-cell-group>
+</view>
+<view class="base-device">
+  <van-cell-group  title="房间内设备：">
+    <block wx:for="{{thisroomdeviceList}}" wx:key="{{index}}"  wx:for-index="idx"  wx:for-item="device">
+      <van-cell center title="{{device.name}}" icon="https://images.tuyacn.com/{{device.icon}}" value="移出此房间" is-link arrow-direction="down" size="large" border="{{ false }}" data-idx="{{idx}}" bind:click="roomdeviceDelClick" />
+    </block>
+  </van-cell-group>
+</view>
+<view class="base-device">
+  <van-cell-group  title="不在此房间设备：">
+    <block wx:for="{{otherdeviceList}}" wx:key="{{index}}"  wx:for-index="idx"  wx:for-item="device">
+      <van-cell center title="{{device.name}}" icon="https://images.tuyacn.com/{{device.icon}}" value="加入此房间" is-link arrow-direction="up" size="large" border="{{ false }}" data-idx="{{idx}}" bind:click="roomdeviceAddClick" />
+    </block>
+  </van-cell-group>
+</view>
+<view class="base-device-button">
+  <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="roomdeviceSaveClick" >保存</van-button>
+</view>

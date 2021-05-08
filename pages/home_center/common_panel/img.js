@@ -1,5 +1,5 @@
-const dcOn = '/image/kg/dc102_1_on.png'
-const dcOff = '/image/kg/dc102_1_off.png'
+const dcOn = 'https://images.tuyacn.com/smart/uiconf/dc102_1_on.png'
+const dcOff = 'https://images.tuyacn.com/smart/uiconf/dc102_1_off.png'
 const power = '/image/kg/power_on.png'
 const powerOff = '/image/kg/power_off.png'
 const schedule = '/image/kg/schedule.png'

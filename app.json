@@ -18,13 +18,10 @@
   },
   "pages": [
     "pages/home_center/device_list/index",
-    "pages/guide/index",
     "pages/home_center/common_panel/index",
     "pages/home_center/device_manage/index",
-    "pages/cloud_check/index",
     "pages/function_center/device_connect/index",
     "pages/web_view/index",
-    "pages/base_function/index",
     "pages/home_center/index",
     "pages/home_center/other_panel/index",
     "pages/home_center/statistics_panel/index",
@@ -37,7 +34,8 @@
     "pages/home_center/scenes/editdevice",
     "pages/home_center/common_panel/timer",
     "pages/home_center/common_panel/edittimer",
-    "pages/home_center/common_panel/edittimmiss"
+    "pages/home_center/common_panel/edittimmiss",
+    "pages/home_center/home_list/room_device"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -256,11 +256,15 @@ Page({
   },
   //选择面板点击选项后触发
   onroomEditSelect: function(e){
+    var { thisHomeidx, familyList, thisRoom } = this.data
     var name = e.detail.name
     console.log(name)
     this.setData({ 
       roomEditSelectshow: false
     })
+    var home_id = familyList[thisHomeidx].home_id
+    var room_id = thisRoom.room_id
+    var roomname = thisRoom.name
     switch (name) {
       case '房间管理': 
         this.setData({ 
@@ -268,8 +272,10 @@ Page({
         })
         break;
       default: {
+        console.log(home_id)
+        console.log(room_id)
         wx.navigateTo({
-          url: `/pages/web_view/index`,
+          url: `/pages/home_center/home_list/room_device?home_id=${home_id}&room_id=${room_id}&roomname=${roomname}`,
         })
       }
     }

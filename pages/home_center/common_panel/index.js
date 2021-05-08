@@ -205,9 +205,9 @@ Page({
   },
   //跳转定时页面
   timerShow: function(){
-    const { device_id } = this.data
+    const { device_id, device_name, icon } = this.data
     wx.navigateTo({
-      url: `/pages/home_center/common_panel/timer?device_id=${device_id}`,
+      url: `/pages/home_center/common_panel/timer?device_id=${device_id}&device_name=${device_name}&icon=${icon}`,
     })
   },
 })

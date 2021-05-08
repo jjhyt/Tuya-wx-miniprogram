@@ -11,6 +11,12 @@ text {
 	color: #f55a12;
 }
 
+.base-checkbox {
+  margin-top: 10rpx;
+  flex-direction: row;
+  display: flex;
+}
+
 .base-scenes-button {
   margin-top: 50rpx;
   display: flex;

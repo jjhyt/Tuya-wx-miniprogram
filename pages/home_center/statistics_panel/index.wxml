@@ -38,3 +38,5 @@
   </van-popup>
   <van-cell bind:click="nianClick" title="年报表({{thisyearString}})" is-link value=""  />
 </van-cell-group>
+<van-cell bind:click="oncustomDisplay" title="自定义日期报表" is-link value="{{ customdate }}"  icon="notes-o" />
+<van-calendar show="{{ customshow }}" type="range" bind:close="oncustomClose" bind:confirm="oncustomConfirm" min-date="{{ customminDate }}" max-date="{{ custommaxDate }}" />

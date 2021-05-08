@@ -10,6 +10,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    customshow: false,
+    customdate: "选择开始和结束日期",
+    custombegindate: "",
+    customenddate: "",
+    customminDate: new Date(2020,0,1).getTime(),
+    custommaxDate: new Date().getTime(),
     niancolumns:['2019', '2020', '2021'],
     nianbaodate: '自选年份',
     nianbaoshow: false,
@@ -221,6 +227,45 @@ Page({
     });
   },
   //日报操作结束！
+  //自定义日报开始
+oncustomDisplay: function(){
+  var thisyear = new Date().getFullYear()
+  var thismonth = new Date().getMonth()
+  var thisday = new Date().getDay()
+  if (thismonth >= 3) {
+    thismonth = thismonth - 3
+  }else{
+    thisyear = thisyear - 1
+    thismonth = thismonth + 9
+  }
+  var customminDate = new Date(thisyear,thismonth,thisday).getTime()
+  this.setData({
+    customminDate:customminDate,
+    customshow: true
+  });
+},
+oncustomClose: function(){
+  this.setData({
+    customshow: false
+  });
+},
+oncustomConfirm: async function(e){
+  var { device_id } = this.data
+  var [start, end] = e.detail
+  var custombegindate = this.formatTime(start, 'YMD')
+  var customenddate = this.formatTime(end, 'YMD')
+  this.setData({
+    customshow: false,
+    custombegindate: custombegindate,
+    customenddate: customenddate,
+    customdate: `${custombegindate} - ${customenddate}`
+  });
+  var statiDays  = await getStatiDays(device_id, custombegindate, customenddate)
+  this.updateData(statiDays.days);
+  console.log(this)
+},
+
+  //自定义日报结束
   //月报操作开始
   onyuebaoDisplay() {
     this.setData({ yuebaoshow: true });
@@ -392,4 +437,6 @@ lineChart.updateData({
     series: series
 });
 },
+
+
 })

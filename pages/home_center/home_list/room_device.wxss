@@ -1,0 +1,10 @@
+/* pages/home_center/home_list/room_device.wxss */
+.base-device {
+  margin-top: 50rpx;
+}
+
+.base-device-button {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}

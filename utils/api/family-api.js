@@ -213,3 +213,62 @@ export const deleteRoom = (home_id, room_id) => {
     }
   })
 }
+
+// 新增家庭下房间内的设备
+export const roomAddDevices = (home_id, room_id, device_ids) => {
+  return request({
+    name: 'ty-service',
+    data: {
+      action: "home.roomAddDevices",
+      params: {
+        "home_id": home_id,
+        "room_id": room_id,
+        "device_ids": device_ids
+      }
+    }
+  })
+}
+
+// 修改家庭下房间内的设备
+export const roomEditDevices = (home_id, room_id, device_ids) => {
+  return request({
+    name: 'ty-service',
+    data: {
+      action: "home.roomEditDevices",
+      params: {
+        "home_id": home_id,
+        "room_id": room_id,
+        "device_ids": device_ids
+      }
+    }
+  })
+}
+
+// 删除家庭下房间内的设备
+export const roomDeleteDevices = (home_id, room_id, device_ids) => {
+  return request({
+    name: 'ty-service',
+    data: {
+      action: "home.roomDeleteDevices",
+      params: {
+        "home_id": home_id,
+        "room_id": room_id,
+        "device_ids": device_ids
+      }
+    }
+  })
+}
+
+// 查询家庭下房间内的设备
+export const roomDevices = (home_id, room_id) => {
+  return request({
+    name: 'ty-service',
+    data: {
+      action: "home.roomDevices",
+      params: {
+        "home_id": home_id,
+        "room_id": room_id
+      }
+    }
+  })
+}
