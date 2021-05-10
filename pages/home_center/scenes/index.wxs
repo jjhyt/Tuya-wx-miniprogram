@@ -3,6 +3,31 @@ var FixJson = {
     return JSON.stringify(value)
   }
 }
+var FixMiss = function (d) {
+  switch ( d ) {
+    case "switch":
+      return "开关：";
+      break;
+    case "countdown_1":
+      return "倒计时：";
+      break;
+    case "Boolean":
+      return "打开/关闭";
+      break;
+    case "Integer":
+      return "选择计数";
+      break;
+    case "Enum":
+      return "选项";
+      break;
+    case "cz":
+      return "插座";
+      break;
+    default:
+      return "未知";
+    }
+}
 module.exports = {
   toFix: FixJson.toFix,
+  FixMiss: FixMiss,
 }

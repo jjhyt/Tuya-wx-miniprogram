@@ -23,3 +23,17 @@
   font-size: 35rpx;
   color: #666;
  }
+ .dalog-info {
+  padding: 16px 16px;
+  display: flex;
+  justify-content: center;
+}
+.dalog-text {
+  padding: 16px 16px;
+  display: flex;
+}
+.dialog-button {
+  padding: 10px 30px 5px 30px;
+  display: flex;
+  justify-content: space-between;
+}

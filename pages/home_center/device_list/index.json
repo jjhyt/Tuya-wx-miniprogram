@@ -1,8 +1,10 @@
 {
   "usingComponents": {
-    
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-switch": "@vant/weapp/switch/index"
   },
   "navigationStyle":"default",
   "navigationBarTitleText": "小小智能家",
-  "disableScroll": true
+  "disableScroll": false
 }

@@ -19,6 +19,23 @@
               <view class="base-name-add">添加设备</view>
           </view>
         </view>
+        <view wx:if="{{lanSwitchList.length > 0}}" class="root">
+          <van-cell-group title="局域网设备：">
+            <block wx:for="{{ lanSwitchList }}" wx:key="{{ index }}" wx:for-item="Switch">
+              <van-cell center size="large" icon="{{Switch.Image == 'Light' ? '/image/light.png' : '/image/switch.png'}}" title="{{Switch.Name}} （{{Switch.Status == 'On' ? '打开' : '关闭'}}）">
+                <van-switch checked="{{ Switch.Status == 'On' }}" data-idx="{{Switch.idx}}" data-id="{{index}}" bind:change="lanSwitchChange" />
+              </van-cell>
+            </block>
+          </van-cell-group>
+        </view>
+        <view wx:if="{{lanTempList.length > 0}}" class="root">
+          <van-cell-group title="局域网传感器：">
+            <block wx:for="{{ lanTempList }}" wx:key="{{ index }}" wx:for-item="Temp">
+              <van-cell center title="{{Temp.Name}}" icon="/image/temp.png"  value="{{Temp.LastUpdate}}" size="large" label="{{Temp.Data}}" />
+            </block>
+          </van-cell-group>
+        </view>
+        <view class="root-kong"></view>
       </scroll-view>
 
 </view>

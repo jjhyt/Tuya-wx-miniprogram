@@ -1,4 +1,5 @@
 <!--pages/home_center/common_panel/edittimmiss.wxml-->
+<wxs module = "FixMiss" src= "index.wxs"></wxs>
 <view class = "base-scenes">
   <van-cell-group>
     <van-cell center title="{{ device_name }}" icon="https://images.tuyacn.com/{{ icon }}" />
@@ -7,7 +8,7 @@
 <view class="base-scenes">
   <van-cell-group  title="可执行动作：">
     <block wx:for="{{functionsList}}" wx:key="{{index}}" wx:for-item="functions">
-      <van-cell center title="{{functions.code}}" value="{{functions.type}}" label="{{ functions.values}}" is-link border="{{ false }}" data-idx="{{index}}" bind:click="functionsClick" />
+      <van-cell center title="{{FixMiss.FixMiss(functions.code)}}" value="{{FixMiss.FixMiss(functions.type)}}" label="{{ functions.values}}" is-link border="{{ false }}" data-idx="{{index}}" bind:click="functionsClick" />
     </block>
     <van-field label="执行动作：" disabled value="{{ missACvalue }}" />
   </van-cell-group>
@@ -26,6 +27,18 @@
     <view class="tui-slider-box">
       <slider bindchange="onsliderChange" min="{{ sliderMin }}" max="{{ sliderMax }}" step="{{ sliderStep }}" value="{{slidervalue}}" show-value/>
     </view>
+  </view>
+  <view class="dialog-button">
+      <van-button plain hairline round type="primary" size="mini" data-id="1" bind:click="sliderbutton">-1</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-id="2" bind:click="sliderbutton">+1</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-id="3" bind:click="sliderbutton">-30</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-id="4" bind:click="sliderbutton">+30</van-button>
+  </view>
+  <view class="dialog-button">
+      <van-button plain hairline round type="primary" size="mini" data-id="5" bind:click="sliderbutton">-300</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-id="6" bind:click="sliderbutton">+300</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-id="7" bind:click="sliderbutton">-1800</van-button>
+      <van-button plain hairline round type="primary" size="mini" data-id="8" bind:click="sliderbutton">+1800</van-button>
   </view>
   <view class="base-scenes-button">
     <van-button style="width: 400rpx" block plain round type="info" bind:click="sliderSaveClick" >确定</van-button>

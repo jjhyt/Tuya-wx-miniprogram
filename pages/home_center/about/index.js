@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    Domoshow:false,
+    DomoIPvalue:"",
+    DomoPortvalue:""
   },
 
   /**
@@ -79,7 +81,43 @@ Page({
     wx.navigateTo({
       url: `/pages/home_center/family/index`,
     })
-  }
-  
-
+  },
+  //Domoticz设置
+  DomoClick: function(){
+    var DomoIPvalue = wx.getStorageSync('lanIP')
+    var DomoPortvalue = wx.getStorageSync('lanPort')
+    this.setData({ 
+      DomoIPvalue:DomoIPvalue,
+      DomoPortvalue:DomoPortvalue,
+      Domoshow:true
+     })
+  },
+  onDomoClose: function(){
+    this.setData({ 
+      Domoshow:false
+     })
+  },
+  onDomoIPChange(event) {
+    // event.detail 为当前输入的值
+    //console.log(event.detail);
+    this.setData({ 
+      DomoIPvalue:event.detail
+     })
+  },
+  onDomoPortChange(event) {
+    // event.detail 为当前输入的值
+    //console.log(event.detail);
+    this.setData({ 
+      DomoPortvalue:event.detail
+     })
+  },
+  DomoSaveClick: function(){
+    var { DomoIPvalue, DomoPortvalue } = this.data
+    wx.setStorageSync('lanIP', DomoIPvalue)
+    wx.setStorageSync('lanPort', DomoPortvalue)
+    this.setData({ 
+      Domoshow:false
+     })
+     console.log(DomoIPvalue , DomoPortvalue)
+  },
 })

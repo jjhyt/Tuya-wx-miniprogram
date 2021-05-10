@@ -208,6 +208,42 @@ Page({
     //console.log(missJson)
     
   },
+  sliderbutton: function(e){
+    var id = e.currentTarget.dataset.id
+    var { slidervalue } = this.data
+    console.log(id)
+    var newvalue =  slidervalue
+    switch (id) {
+      case '1': 
+        newvalue = newvalue - 1;
+        break;
+      case '2': 
+        newvalue = newvalue + 1;
+        break;
+      case '3': 
+        newvalue = newvalue - 30;
+        break;
+      case '4': 
+        newvalue = newvalue + 30;
+        break;
+      case '5': 
+        newvalue = newvalue - 300;
+        break;
+      case '6': 
+        newvalue = newvalue + 300;
+        break;
+      case '7': 
+        newvalue = newvalue - 1800;
+        break;
+      case '8': 
+        newvalue = newvalue + 1800;
+        break;
+    }
+    if (newvalue < 0 ){ newvalue = 0 }
+    this.setData({ 
+      slidervalue:newvalue
+    })
+  },
   functionsSaveClick() {
     var {device_id, device_name, device_icon, missACvalue, thisActions } = this.data
     console.log(missACvalue)

@@ -10,7 +10,11 @@ Page({
    * 页面的初始数据
    */
   data: { 
-    deviceList: []
+    deviceList: [],
+    lanSwitchList: [],
+    lanTempList: [],
+    realTime: null,
+    lanurl: ""
   },
 
   /**
@@ -60,6 +64,97 @@ Page({
    
     this.setData({ deviceList })
     console.log(this)
+    var that = this
+    var lanip = wx.getStorageSync('lanIP')
+    var lanport = wx.getStorageSync('lanPort')
+    if (lanip.length < 8 ){
+      lanip = "192.168.1.1"
+    }
+    var lanurl = "http://" + lanip + ":" + lanport +"/json.htm"
+    console.log(lanurl , lanip.length)
+    this.setData({ lanurl })
+    wx.request({
+      url: lanurl,
+      data: {
+        type: 'devices',
+        used: 'true',
+        filter: 'light',
+        favorite: '1'
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success (res) {
+        var lanSwitchList = res.data.result
+        console.log(lanSwitchList)
+        that.setData({ lanSwitchList })
+      }
+    })
+    wx.request({
+      url: lanurl,
+      data: {
+        type: 'devices',
+        used: 'true',
+        filter: 'weather',
+        favorite: '1'
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success (res) {
+        var lanTempList = res.data.result
+        console.log(lanTempList)
+        that.setData({ lanTempList })
+      }
+    })
+    /**
+     * 每隔一段时间请求服务器刷新数据(客户状态)
+     * 当页面显示时开启定时器(开启实时刷新)
+     * 每隔1分钟请求刷新一次
+     * @注意：用户切换后页面会重新计时
+     */
+    that.data.realTime = setInterval(function()
+    {
+      wx.request({
+        url: lanurl,
+        data: {
+          type: 'devices',
+          used: 'true',
+          filter: 'light',
+          favorite: '1'
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success (res) {
+          var lanSwitchList = res.data.result
+          console.log(lanSwitchList)
+          that.setData({ lanSwitchList })
+        }
+      })
+      wx.request({
+        url: lanurl,
+        data: {
+          type: 'devices',
+          used: 'true',
+          filter: 'weather',
+          favorite: '1'
+        },
+        header: {
+          'content-type': 'application/json'
+        },
+        success (res) {
+          var lanTempList = res.data.result
+          console.log(lanTempList)
+          that.setData({ lanTempList })
+        }
+      })
+
+    }, 60000)//间隔时间
+    // 更新数据
+    this.setData({
+      realTime:that.data.realTime   //实时数据对象(用于关闭实时刷新方法)
+    })
   },
 
   /**
@@ -68,7 +163,59 @@ Page({
   onUnload: function () {
 
   },
+/**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function()
+  {
 
+    /**
+     * 当页面隐藏时关闭定时器(关闭实时刷新)
+     * 切换到其他页面了
+     */
+     clearInterval(this.data.realTime)
+  
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    var that = this
+  wx.request({
+    url: lanurl,
+    data: {
+      type: 'devices',
+      used: 'true',
+      filter: 'light',
+      favorite: '1'
+    },
+    header: {
+      'content-type': 'application/json'
+    },
+    success (res) {
+      var lanSwitchList = res.data.result
+      console.log(lanSwitchList)
+      that.setData({ lanSwitchList })
+    }
+  })
+  wx.request({
+    url: lanurl,
+    data: {
+      type: 'devices',
+      used: 'true',
+      filter: 'weather',
+      favorite: '1'
+    },
+    header: {
+      'content-type': 'application/json'
+    },
+    success (res) {
+      var lanTempList = res.data.result
+      console.log(lanTempList)
+      that.setData({ lanTempList })
+    }
+  })
+  },
   jumpToPanel({currentTarget}) {
     const { dataset: { device } } = currentTarget
     const { id, category, name } = device
@@ -102,5 +249,34 @@ Page({
         })
       }
     }
+  },
+  //局域网开关操作
+  lanSwitchChange({currentTarget}) {
+    var { dataset: { id, idx } } = currentTarget
+    var { lanurl, lanSwitchList } = this.data
+    console.log(id, idx)
+    var thatsta = lanSwitchList[id].Status
+    if (thatsta == 'On') {
+      var thissta = "Off"
+    }else{
+      var thissta = "On"
+    }
+    lanSwitchList[id].Status = thissta
+    this.setData({ lanSwitchList })
+    wx.request({
+      url: lanurl,
+      data: {
+        type: 'command',
+        param: 'switchlight',
+        idx: idx,
+        switchcmd: thissta
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success (res) {
+        console.log(res.data.status)
+      }
+    })
   }
 })

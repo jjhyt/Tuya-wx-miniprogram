@@ -76,3 +76,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.root {
+  padding: 5px 0px 5px 0px ;
+}
+.root-kong {
+  padding: 20px ;
+}

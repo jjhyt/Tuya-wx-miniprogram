@@ -5,7 +5,7 @@ const powerOff = '/image/kg/power_off.png'
 const schedule = '/image/kg/schedule.png'
 const statistics = '/image/kg/statistics.png'
 const timer = '/image/kg/timer.png'
-const bgImage = '/image/kg/bg_2_q_on.png'
+const bgImage = '/image/kg/bg_2_q_on.jpg'
 
 module.exports =  {
   dcOn,

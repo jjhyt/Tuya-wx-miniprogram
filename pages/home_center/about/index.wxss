@@ -21,3 +21,8 @@
   padding-top: 30px;
   display: flex;
 }
+.base-device-button {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}
