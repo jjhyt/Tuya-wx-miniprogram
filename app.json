@@ -35,7 +35,8 @@
     "pages/home_center/common_panel/timer",
     "pages/home_center/common_panel/edittimer",
     "pages/home_center/common_panel/edittimmiss",
-    "pages/home_center/home_list/room_device"
+    "pages/home_center/home_list/room_device",
+    "pages/home_center/scenes/editbg"
   ],
   "window": {
     "backgroundTextStyle": "light",

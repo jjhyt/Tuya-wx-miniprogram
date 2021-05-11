@@ -1,0 +1,9 @@
+/* pages/home_center/scenes/editbg.wxss */
+.base-grid {
+  margin-top: 20rpx;
+}
+.base-scenes-button {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}

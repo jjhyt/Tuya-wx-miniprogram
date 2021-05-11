@@ -166,14 +166,14 @@
 }
 
 .base-name-scenes {
-  margin-top: 10rpx;
+  margin-top: 75rpx;
   width: 352rpx;
   height: 44rpx;
   font-family: PingFangSC-Regular;
   font-size: 32rpx;
   line-height: 44rpx;
   text-align: center;
-  color: rgba(255, 255, 255, 0.877);
+  color: rgb(255, 255, 255);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -189,4 +189,13 @@ Page({
       url: `/pages/home_center/scenes/editdevice?home_id=${home_id}&idx=${idx}&type=${type}&actionsList=${actionsListstr}`,
     })
   },
+  //修改背景图片
+  bgEditClick: function(){
+    var { thisScenes } = this.data
+    var thisScenesstr = JSON.stringify(thisScenes)
+    console.log(thisScenesstr)
+    wx.navigateTo({
+      url: `/pages/home_center/scenes/editbg?thisScenes=${thisScenesstr}`,
+    })
+  },
 })

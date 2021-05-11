@@ -1,0 +1,12 @@
+<!--pages/home_center/scenes/editbg.wxml-->
+<van-radio-group value="{{ thisimage }}" bind:change="bgchange">
+  <van-grid column-num="3" gutter="{{ 5 }}" border="{{ false }}">
+    <van-grid-item use-slot wx:for="{{ PicturesList }}" wx:for-item="index">
+      <image style="width: 100%; height: 50px;" src="{{PicturesList[index]}}" />
+      <van-radio name="{{PicturesList[index]}}" class="base-grid" >选择</van-radio>
+    </van-grid-item>
+  </van-grid>
+</van-radio-group>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="bgSaveClick" >保存</van-button>
+</view>

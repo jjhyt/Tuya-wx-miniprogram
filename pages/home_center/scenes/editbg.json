@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index"
+  },
+  "navigationStyle":"default",
+  "navigationBarTitleText": "编辑背景",
+  "disableScroll": false
+}
