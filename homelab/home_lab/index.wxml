@@ -1,0 +1,20 @@
+<!--home_lab/home_lab/index.wxml-->
+<view class="dalog-text">
+    <van-cell-group>
+      <van-field value="{{thisHome.home_id}}" label="家庭id:" disabled border="{{ false }}" />
+      <van-field value="{{ namevalue }}" label="家庭名称:" border="{{ false }}" bind:change="onnameChange" />
+      <van-field value="{{ geo_namevalue }}" label="家庭位置:" border="{{ false }}"  bind:change="ongeoChange" />
+      <van-field value="{{ latvalue }}" label="经度:" border="{{ false }}"  bind:change="onlatChange" />
+      <van-field value="{{ lonvalue }}" label="纬度:" border="{{ false }}"  bind:change="onlonChange" />
+    </van-cell-group>
+  </view>
+<view class="base-scenes-button">
+  <van-button type="primary" icon="location-o" size="small" bind:click="familylocaClick">家庭定位</van-button>
+</view>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="plus" plain round type="info" bind:click="familyEditClick" >保存信息</van-button>
+  
+</view>
+<view class="base-scenes-button">
+  <van-button style="width: 400rpx" block icon="cross" plain round type="danger" bind:click="familyDelClick" >删除家庭</van-button>
+</view>

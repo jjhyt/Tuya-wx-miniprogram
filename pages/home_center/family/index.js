@@ -99,7 +99,10 @@ Page({
     })
     switch (name) {
       case '家庭管理': 
-        this.showHomeInfo()
+        //this.showHomeInfo()
+        wx.navigateTo({
+          url: `/homelab/home_lab/index?home_id=${thisHome.home_id}`,
+        })
         break;
         case '成员管理': 
         wx.navigateTo({

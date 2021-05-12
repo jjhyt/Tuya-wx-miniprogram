@@ -21,7 +21,6 @@
       <van-field value="{{ namevalue }}" label="家庭名称:" placeholder="{{thisHome.name}}" border="{{ false }}" bind:change="onfieldChange" />
       <van-field value="{{thisHome.geo_name}}" label="家庭位置:" disabled border="{{ false }}" />
     </van-cell-group>
-    
   </view>
   <view class="dalog-info">
     <van-button icon="cross" round data-id="{{thisHome.home_id}}" bind:click="dellHome" type="danger">删除家庭</van-button>

@@ -1,0 +1,11 @@
+/* home_lab/home_lab/index.wxss */
+.dalog-info {
+  padding: 16px 16px;
+  display: flex;
+  justify-content: center;
+}
+.base-scenes-button {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}

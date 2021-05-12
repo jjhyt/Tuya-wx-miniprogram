@@ -24,15 +24,32 @@ export const getHomeDeviceList = (home_id) => {
   });
 }
 
+// 查询家庭
+export const infoFamily = (home_id) => {
+  return request({
+    name: 'ty-service',
+    data: {
+      action: 'home.infos',
+      params: {
+        home_id
+      }
+    }
+  })
+}
+
+
 // 修改家庭信息
-export const changFamily = (home_id, homeName) => {
+export const changFamily = (home_id, homeName, geoname, lat, lon) => {
   return request({
     name: 'ty-service',
     data: {
       action: 'home.edit',
       params: {
-        home_id,
-        name: homeName
+        "home_id":home_id,
+        "geo_name":geoname,
+        "name":homeName,
+        "lat":lat,
+        "lon":lon
       }
     }
   });
