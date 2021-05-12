@@ -1,4 +1,4 @@
-// miniprogram/pages/function_center/device_connet/index.js
+// miniprogram/connectpack/function_center/device_connet/index.js
 import { reqTicket, getClientId } from '../../../utils/api/common-api'
 
 Page({
@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    apUrl: '/pages/web_view/index?urlType=apUrl',
+    apUrl: '/connectpack/web_view/index?urlType=apUrl',
     list: [
       {
         name: 'Wi-Fi AP 配网',

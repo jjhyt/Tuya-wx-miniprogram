@@ -1,4 +1,4 @@
-/* miniprogram/pages/function_center/device_connet/index.wxss */
+/* miniprogram/connectpack/function_center/device_connet/index.wxss */
 .root {
 	padding: 16px 16px;
 }

@@ -235,7 +235,7 @@ Page({
   //跳转到添加设备页
   jumpToAdd: function(){
     wx.navigateTo({
-      url: `/pages/function_center/device_connect/index`,
+      url: `/connectpack/function_center/device_connect/index`,
     })
   },
   jumpToOther({currentTarget}) {

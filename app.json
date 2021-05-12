@@ -20,8 +20,6 @@
     "pages/home_center/device_list/index",
     "pages/home_center/common_panel/index",
     "pages/home_center/device_manage/index",
-    "pages/function_center/device_connect/index",
-    "pages/web_view/index",
     "pages/home_center/index",
     "pages/home_center/other_panel/index",
     "pages/home_center/statistics_panel/index",
@@ -38,6 +36,21 @@
     "pages/home_center/home_list/room_device",
     "pages/home_center/scenes/editbg"
   ],
+  "subpackages": [
+    {
+      "root": "connectpack",
+      "pages": [
+        "function_center/device_connect/index",
+        "web_view/index"
+      ],
+      "plugins": {
+        "tuya-ap-plugin": {
+          "version": "3.3.19",
+          "provider": "wxd2aa51ffacc3ff86"
+        }
+      }
+    }
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -46,10 +59,7 @@
     "navigationStyle": "custom"
   },
   "plugins": {
-    "tuya-ap-plugin": {
-      "version": "3.3.19",
-      "provider": "wxd2aa51ffacc3ff86"
-    },
+    
     "tuya-message-center": {
       "version": "1.0.1",
       "provider": "wx88a79b7ae36fcbf5"
