@@ -3,7 +3,7 @@
 // import { getMqttconfig } from '../../../utils/api/device-api';
 // import request from '../../../utils/request';
 import { getFamilyList, getHomeDeviceList, getRoomList, addRoom, changRoom, deleteRoom } from '../../../utils/api/family-api'
-import { scenesInfos, scenesTrigger } from '../../../utils/api/scenes-api'
+import { scenesInfos, scenesTrigger, autoListbyHome } from '../../../utils/api/scenes-api'
 
 Page({
 
@@ -23,6 +23,7 @@ Page({
     familyList:[],
     roomList:[],
     scenesList:[],
+    autoList:[],
     thisRoom:"",
     addroomshow: false,
     addroomname: "",
@@ -105,6 +106,7 @@ Page({
     const deviceList = await getHomeDeviceList(familyList[thisHomeidx].home_id)
     const { rooms } = await getRoomList(familyList[thisHomeidx].home_id)
     const scenes = await scenesInfos(familyList[thisHomeidx].home_id)
+    const autoList = await autoListbyHome(familyList[thisHomeidx].home_id)
     deviceList.forEach(item => {
       item.icon = `https://images.tuyacn.com/${item.icon}`
     })
@@ -112,7 +114,7 @@ Page({
     this.setData({ 
       deviceList:deviceList,
       roomList:rooms,
-      //scenesList:scenesList
+      autoList:autoList
     })
     //以下程序为scenesList中加入对应的name和icon元素
     console.log(scenesList.length)
@@ -352,6 +354,21 @@ Page({
     console.log(datastr)
     wx.navigateTo({
       url: `/pages/home_center/scenes/index?home_id=${home_id}&type=${type}&scenes=${datastr}`,
+    })
+  },
+  //跳转自动化插件页
+  jumpToautoAdd: function(){
+    var { thisHomeidx, familyList } = this.data
+    var home_id = familyList[thisHomeidx].home_id
+    wx.navigateTo({
+      url: `/connectpack/web_view/index`,
+    })
+  },
+  jumpToautoPanel: function(){
+    var { thisHomeidx, familyList } = this.data
+    var home_id = familyList[thisHomeidx].home_id
+    wx.navigateTo({
+      url: `/autochange/auto/index?home_id=${home_id}`,
     })
   },
 })

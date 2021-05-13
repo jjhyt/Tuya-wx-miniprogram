@@ -66,6 +66,29 @@
         </view>
       </scroll-view>
     </van-tab>
+    <van-tab title="自动化">
+      <scroll-view class="scroll-list">
+        <view class="root">
+          <block wx:if="{{autoList.length > 0}}">
+          <block wx:for="{{autoList}}" wx:key="{{index}}" wx:for-item="auto">
+            <view class="device-block" data-idx="{{ index }}" bindtap="jumpToautoPanel">
+              <text class="device-block-title">{{auto.name}}</text>
+              <van-icon size="20" name="arrow" />
+            </view>
+          </block>
+          </block>
+          <block wx:else>
+            <view class="device-block" style="justify-content: center">
+              <text class="device-noitem">暂无自动化</text>
+            </view>
+          </block>
+          <view class="device-block" style="justify-content: center"  bindtap="jumpToautoAdd">
+            <text class="device-remove">进入自动化设置</text>
+          </view>
+
+        </view>
+      </scroll-view>
+    </van-tab>
   </van-tabs>
 </view>
 

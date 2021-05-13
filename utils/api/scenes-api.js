@@ -94,3 +94,58 @@ export const deviceSpec = (device_id) => {
     }
   })
 }
+
+//查询家庭下的自动化列表
+export const autoListbyHome = (home_id) => {
+  return wx.cloud.callFunction({
+    name: 'ty-service',
+    data: {
+      "action": "automation.listByHome",
+      "params": {
+        "home_id":home_id
+      }
+    }
+  })
+}
+
+//查询家庭下的某个自动化
+export const autoInfo = (home_id, automation_id) => {
+  return wx.cloud.callFunction({
+    name: 'ty-service',
+    data: {
+      "action": "automation.info",
+      "params": {
+        "home_id":home_id,
+        "automation_id":automation_id
+      }
+    }
+  })
+}
+
+//启用自动化
+export const autoEnable = (home_id, automation_id) => {
+  return wx.cloud.callFunction({
+    name: 'ty-service',
+    data: {
+      "action": "automation.enable",
+      "params": {
+        "home_id":home_id,
+        "automation_id":automation_id
+      }
+    }
+  })
+}
+
+//停用自动化
+export const autoDisable = (home_id, automation_id) => {
+  return wx.cloud.callFunction({
+    name: 'ty-service',
+    data: {
+      "action": "automation.disable",
+      "params": {
+        "home_id":home_id,
+        "automation_id":automation_id
+      }
+    }
+  })
+}
