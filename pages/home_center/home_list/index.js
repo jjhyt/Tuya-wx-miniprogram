@@ -4,6 +4,8 @@
 // import request from '../../../utils/request';
 import { getFamilyList, getHomeDeviceList, getRoomList, addRoom, changRoom, deleteRoom } from '../../../utils/api/family-api'
 import { scenesInfos, scenesTrigger, autoListbyHome } from '../../../utils/api/scenes-api'
+import { reqTicket, getClientId } from '../../../utils/api/common-api'
+// const autoPlugin = requirePlugin('tuya-auto-plugin');
 
 Page({
 
@@ -142,6 +144,8 @@ Page({
       scenesList:scenesList
     })
     console.log(this)
+    // const currentAutoHomeId = autoPlugin.getHomeId()
+    // console.log(currentAutoHomeId)
   },
   
   /**
@@ -357,11 +361,12 @@ Page({
     })
   },
   //跳转自动化插件页
-  jumpToautoAdd: function(){
+  jumpToautoAdd: async function(){
     var { thisHomeidx, familyList } = this.data
     var home_id = familyList[thisHomeidx].home_id
+    const [{ ticket }, clientId] = await Promise.all([reqTicket(), getClientId()])
     wx.navigateTo({
-      url: `/connectpack/web_view/index`,
+      url: `plugin://tuya-auto-plugin/autoHome?ticket=${ticket}&clientId=${clientId}&home_id=${home_id}`,
     })
   },
   jumpToautoPanel: function(){

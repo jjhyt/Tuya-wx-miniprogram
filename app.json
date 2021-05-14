@@ -61,18 +61,6 @@
           "provider": "wx76a9a06e5b4e693e"
         }
       }
-    },
-    {
-      "root": "autochange",
-      "pages": [
-        "auto/index"
-      ],
-      "plugins": {
-        "tuya-auto-plugin": {
-          "version": "1.3.2",
-          "provider": "wx5dc916a9f79dc41f"
-        }
-      }
     }
   ],
   "window": {
@@ -86,6 +74,10 @@
     "tuya-message-center": {
       "version": "1.0.1",
       "provider": "wx88a79b7ae36fcbf5"
+    },
+    "tuya-auto-plugin": {
+          "version": "1.2.1",
+          "provider": "wx5dc916a9f79dc41f"
     }
   },
   "permission": {

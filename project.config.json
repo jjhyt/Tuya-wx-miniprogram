@@ -89,7 +89,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.1",
+  "libVersion": "2.12.3",
   "appid": "wxfbea21984391620f",
   "projectname": "tuya_wx_activity_demo-master",
   "debugOptions": {
