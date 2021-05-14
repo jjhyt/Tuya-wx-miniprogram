@@ -140,6 +140,23 @@ dellMember: function(e){
   })
   this.onLoad({home_id})
 },
+//复制账号信息
+copyMember: function(e){
+  var name = e.currentTarget.dataset.name
+  wx.setClipboardData({
+    data: name,
+    success: function (res) {
+      wx.getClipboardData({
+        success: function (res) {
+          wx.showToast({
+            title: '复制成功'
+          })
+        }
+      })
+    }
+  })
+  console.log(name)
+},
   //添加一个测试场景
   testClick: function(){
     // var {home_id} = this.data

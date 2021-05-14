@@ -9,9 +9,9 @@
   <view class="device-block" style="justify-content: center"  bindtap="addMember">
     <text class="device-remove">添加成员+</text>
   </view>
-  <view class="device-block" style="justify-content: center"  bindtap="testClick">
-    <text class="device-remove">测试定时+</text>
-  </view>
+  <view class="device-block">
+      <text class="device-block-title">说明：复制自己的帐号后发送给想加入家庭的管理员，对方将你添加为成员后就能加入对方家庭了！（必须是自己的原始名称，与账号是一样的）</text>
+    </view>
 </view>
 
 <van-dialog use-slot id="van-dialog" showConfirmButton showCancelButton  show="{{dialogShow}}" bind:close="ondialogCancel" bind:confirm="ondialogConfirm" bind:cancel="ondialogCancel" title="成员信息">
@@ -25,6 +25,9 @@
       </view>
     </van-cell-group>
     
+  </view>
+  <view class="dalog-info">
+    <van-button icon="success" round data-name="{{thisMember.name}}" bind:click="copyMember" type="info">复制帐号</van-button>
   </view>
   <view class="dalog-info">
     <van-button icon="cross" round data-id="{{thisMember.uid}}" bind:click="dellMember" type="danger">删除成员</van-button>

@@ -131,8 +131,8 @@ Page({
     // console.log(clientId)
     let uid = wx.getStorageSync('uid');
     var result = await getHomeTicket( thisHome.home_id, uid )
-    console.log(uid)
-    console.log(result)
+    // console.log(uid)
+    // console.log(result)
     wx.setClipboardData({
       data: '分享ID：' + result.sharing_id +'，分享票据：' + result.sharing_ticket,
       success: function (res) {
