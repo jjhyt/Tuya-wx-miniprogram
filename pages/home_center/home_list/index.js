@@ -108,7 +108,8 @@ Page({
     const deviceList = await getHomeDeviceList(familyList[thisHomeidx].home_id)
     const { rooms } = await getRoomList(familyList[thisHomeidx].home_id)
     const scenes = await scenesInfos(familyList[thisHomeidx].home_id)
-    const autoList = await autoListbyHome(familyList[thisHomeidx].home_id)
+    const autoresult = await autoListbyHome(familyList[thisHomeidx].home_id)
+    var autoList = autoresult.result.data
     deviceList.forEach(item => {
       item.icon = `https://images.tuyacn.com/${item.icon}`
     })
@@ -364,16 +365,17 @@ Page({
   jumpToautoAdd: async function(){
     var { thisHomeidx, familyList } = this.data
     var home_id = familyList[thisHomeidx].home_id
-    const [{ ticket }, clientId] = await Promise.all([reqTicket(), getClientId()])
+    var [{ ticket }, clientId] = await Promise.all([reqTicket(), getClientId()])
     wx.navigateTo({
-      url: `plugin://tuya-auto-plugin/autoHome?ticket=${ticket}&clientId=${clientId}&home_id=${home_id}`,
+      url: `plugin://tuya-auto-plugin/autoHome?ticket=${ticket}&client_id=${clientId}&home_id=${home_id}`,
     })
   },
-  jumpToautoPanel: function(){
+  jumpToautoPanel: async function(){
     var { thisHomeidx, familyList } = this.data
     var home_id = familyList[thisHomeidx].home_id
+    var [{ ticket }, clientId] = await Promise.all([reqTicket(), getClientId()])
     wx.navigateTo({
-      url: `/autochange/auto/index?home_id=${home_id}`,
+      url: `plugin://tuya-auto-plugin/autoHome?ticket=${ticket}&client_id=${clientId}&home_id=${home_id}`,
     })
   },
 })
